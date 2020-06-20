@@ -9,7 +9,7 @@ const Logo = styled.div`
     letter-spacing: 0.2rem;
   }
   a:last-child {
-    opacity: 0;
+    //opacity: 0;
   }
   span {
     height: 0.9rem;

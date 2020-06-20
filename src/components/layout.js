@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import _ from 'lodash'
 import baseTheme, { DARK_THEME, GlobalStyles, LIGHT_THEME } from '@/theme'
 import { Header } from '@/components'
-import { useGlobalState } from '@/context'
+import { useGlobalState } from '@/hooks'
 
 import '../theme/typekit.fonts.css'
 

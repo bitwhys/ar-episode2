@@ -1,17 +1,16 @@
-import React, { createContext, useReducer, useContext } from 'react'
+import React, { createContext, useContext, useReducer } from 'react'
+import { THEME_STORAGE_TOKEN } from '@/utils'
 
-// Define the context
 const GlobalStateContext = createContext({})
-const GlobalDispatchContext = createContext({})
 
-// Reducer
+const GlobalDispatchContext = createContext({})
 
 const globalReducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_THEME':
       return {
         ...state,
-        currentTheme: action.type,
+        currentTheme: action.payload,
       }
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
@@ -20,7 +19,7 @@ const globalReducer = (state, action) => {
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(globalReducer, {
-    currentTheme: 'dark',
+    currentTheme: localStorage.getItem(THEME_STORAGE_TOKEN) || 'dark',
   })
 
   return (
@@ -33,4 +32,5 @@ export const GlobalProvider = ({ children }) => {
 }
 
 export const useGlobalState = () => useContext(GlobalStateContext)
+
 export const useGlobalDispatch = () => useContext(GlobalDispatchContext)

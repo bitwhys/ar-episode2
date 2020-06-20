@@ -1,7 +1,10 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, useTheme } from 'styled-components'
 import { normalize } from 'styled-normalize'
+import React from 'react'
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStyles = () => {
+  const theme = useTheme()
+  const Global = createGlobalStyle`
 ${normalize}
 * {
 text-decoration: none;
@@ -17,8 +20,11 @@ overflow-x:hidden;
 
 body {
 font-family: ff-good-headline-web-pro-ext, sans-serif; 
-background: ${({ theme }) => theme.colors.background};
+background: ${theme.colors.background};
+transition: .2s ease-in-out;
 }
 `
+  return <Global />
+}
 
 export default GlobalStyles
